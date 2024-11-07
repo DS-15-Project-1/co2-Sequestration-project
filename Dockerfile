@@ -61,6 +61,89 @@ COPY python_reqs/requirements.txt .
 
 # Install JupyterLab and dependencies
 RUN pip install -r requirements.txt
+
+# Set up additional Python packages
+RUN pip install \
+    jupyterlab \
+    numpy \
+    pandas \
+    matplotlib \
+    seaborn \
+    scikit-learn \
+    scipy \
+    plotly \
+    requests \
+    beautifulsoup4 \
+    pillow \
+    sqlalchemy \
+    google-cloud-bigquery \
+    google-auth-oauthlib \
+    google-auth-httplib2 \
+    google-api-python-client \
+    tensorflow \
+    keras \
+    torch \
+    torchvision \
+    torchaudio \
+    opencv-python \
+    ffmpeg-python \
+    librosa \
+    pydub \
+    youtube-dl \
+    tqdm \
+    ipywidgets \
+    widgetsnbextension \
+    ipympl \
+    jupyter \
+    nbconvert \
+    notebook \
+    pypandoc \
+    jupyter-sql \
+    js2py \
+    regex \
+    soundfile \
+    xgboost \
+    # Additional packages from requirements.txt
+    jupyterlab \
+    numpy \
+    pandas \
+    matplotlib \
+    seaborn \
+    scikit-learn \
+    scipy \
+    plotly \
+    requests \
+    beautifulsoup4 \
+    pillow \
+    sqlalchemy \
+    google-cloud-bigquery \
+    google-auth-oauthlib \
+    google-auth-httplib2 \
+    google-api-python-client \
+    tensorflow \
+    keras \
+    torch \
+    torchvision \
+    torchaudio \
+    opencv-python \
+    ffmpeg-python \
+    librosa \
+    pydub \
+    youtube-dl \
+    tqdm \
+    ipywidgets \
+    widgetsnbextension \
+    ipympl \
+    jupyter \
+    nbconvert \
+    notebook \
+    pypandoc \
+    jupyter-sql \
+    js2py \
+    regex \
+    soundfile \
+    xgboost
+
 # Copy .bash_it directory into the container
 COPY .bash_it /root/.bash_it
 
@@ -68,5 +151,4 @@ COPY .bash_it /root/.bash_it
 RUN /bin/bash -c "source /root/.bash_it/bash_it.sh && bash-it install --silent"
 
 # Set the default command to run when starting the container
-# Set the default command to run when starting the container
-CMD ["jupyter", "lab", "--ip=0.0.0.0", "--allow-root"] 
+CMD ["jupyter", "lab", "--ip=0.0.0.0", "--allow-root"]
