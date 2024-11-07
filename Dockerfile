@@ -69,4 +69,4 @@ RUN /bin/bash -c "source /root/.bash_it/bash_it.sh && bash-it install --silent"
 
 # Set the default command to run when starting the container
 # Set the default command to run when starting the container
-CMD ["jupyter", "lab", "--ip=0.0.0.0", "--allow-root"]
+CMD ["jupyter", "lab", "--ip=0.0.0.0", "--allow-root"] 
