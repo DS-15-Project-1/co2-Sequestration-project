@@ -24,9 +24,7 @@
     ###La Cygne (1, 2)
     
     ###Murray Gill Energy Center (1,2,1-2-cp1, 3,4)
-    .
-    .
-    .
+    
 Here's a more detailed look at each parameter in Hourly Combined Parameters "view template":
 
 1. **Hourly Combined Parameters View**
