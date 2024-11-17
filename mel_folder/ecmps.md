@@ -106,3 +106,14 @@ Here's a more detailed look at each parameter in Hourly Combined Parameters "vie
     - Summary view for compliance with the New Source Performance Standards for certain pollutants.
 
 These views are typically used in the context of continuous emissions monitoring systems (CEMS) for regulatory compliance and operational efficiency.
+
+
+#TO DO: 
+
+## Use seismic data and maps from the Kansas Geological Survey (KGS) to provide information on the potential for ground shaking and structural integrity for each of the facilities on the EPA eCAMP list for Kansas.
+
+1 - Visit the KGS Website: Go to the Kansas Geological Survey website, where they have extensive resources on geologic data, including seismic information.
+
+2 - Seismic Hazard Maps: Look for seismic hazard maps that illustrate areas in Kansas with varying levels of ground shaking risk. These can provide insight into the likelihood of seismic events affecting different regions.
+
+3 - Facility-Specific Reports: Search for any specific assessments or studies related to the facilities on your list. The KGS may have conducted seismic studies or published reports about certain industrial areas which can detail structural integrity considerations.
