@@ -3,10 +3,7 @@ project_root/
 ├── docker-compose.yml
 ├── src/
 │ ├── **init**.py
-│ ├── main.py
-│ ├── data_reader.py
-│ └── data_processor.py
-├── nginx/
-│ └── nginx.conf
+│ └── main.py
+├── nginx.conf
 ├── .gitignore
 └── README.md
