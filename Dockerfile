@@ -5,7 +5,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 ARG DEBIAN_FRONTEND=noninteractive
 
 # Set the working directory
-WORKDIR /notebooks
+WORKDIR /app
 
 # Install system dependencies
 RUN apt-get update && apt-get install -y \
@@ -22,133 +22,27 @@ RUN apt-get update && apt-get install -y \
     xdg-utils \
     x11-apps \
     xvfb \
-    libatspi2.0-0 \
-    libdrm2 \
-    libgbm1 \
-    libxcb-dri3-0 \
-    libxcb-present0 \
-    libxcb-sync1 \
-    libxcb-xfixes0 \
-    libxcb-xinerama0 \
-    libxcb-randr0 \
-    libxcb-shape0 \
-    libxcb-render-util0 \
-    libxcb-cursor0 \
-    libxcb-composite0 \
-    libxcb-damage0 \
-    libxcb-dpms0 \
-    libxcb-glx0 \
-    libxcb-icccm4 \
-    libxcb-image0 \
-    libxcb-keysyms1 \
-    libxcb-render0 \
-    libxcb-res0 \
-    libxcb-util1 \
-    libxcb-xkb1 \
-    libffi-dev \
-    pandoc \
-    texlive-xetex \
-    texlive-fonts-recommended \
-    texlive-full \
+    nginx \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
 # Upgrade pip and install wheel
 RUN python -m pip install --upgrade pip wheel setuptools
 
-# Copy requirements.txt from python directory
-COPY python_reqs/requirements.txt .
-
-# Install JupyterLab and dependencies
-RUN pip install -r requirements.txt
-
-# Set up additional Python packages
+# Install necessary Python packages
 RUN pip install \
-    jupyterlab \
-    numpy \
+    obspy \
+    dask \
     pandas \
-    matplotlib \
-    seaborn \
-    scikit-learn \
-    scipy \
-    plotly \
-    requests \
-    beautifulsoup4 \
-    pillow \
-    sqlalchemy \
-    google-cloud-bigquery \
-    google-auth-oauthlib \
-    google-auth-httplib2 \
-    google-api-python-client \
-    tensorflow \
-    keras \
-    torch \
-    torchvision \
-    torchaudio \
-    opencv-python \
-    ffmpeg-python \
-    librosa \
-    pydub \
-    youtube-dl \
-    tqdm \
-    ipywidgets \
-    widgetsnbextension \
-    ipympl \
-    jupyter \
-    nbconvert \
-    notebook \
-    pypandoc \
-    jupyter-sql \
-    js2py \
-    regex \
-    soundfile \
-    xgboost \
-    # Additional packages from requirements.txt
-    jupyterlab \
-    numpy \
-    pandas \
-    matplotlib \
-    seaborn \
-    scikit-learn \
-    scipy \
-    plotly \
-    requests \
-    beautifulsoup4 \
-    pillow \
-    sqlalchemy \
-    google-cloud-bigquery \
-    google-auth-oauthlib \
-    google-auth-httplib2 \
-    google-api-python-client \
-    tensorflow \
-    keras \
-    torch \
-    torchvision \
-    torchaudio \
-    opencv-python \
-    ffmpeg-python \
-    librosa \
-    pydub \
-    youtube-dl \
-    tqdm \
-    ipywidgets \
-    widgetsnbextension \
-    ipympl \
-    jupyter \
-    nbconvert \
-    notebook \
-    pypandoc \
-    jupyter-sql \
-    js2py \
-    regex \
-    soundfile \
-    xgboost
+    numpy
 
-# Copy .bash_it directory into the container
-COPY .bash_it /root/.bash_it
+# Copy Nginx configuration
+COPY nginx.conf /etc/nginx/nginx.conf
 
-# Set up bash-it
-RUN /bin/bash -c "source /root/.bash_it/bash_it.sh && bash-it install --silent"
+# Set up Nginx to run as a non-root user
+RUN useradd -m nginx
+RUN chown -R nginx:nginx /var/cache/nginx
+RUN chown -R nginx:nginx /var/log/nginx
 
 # Set the default command to run when starting the container
-CMD ["jupyter", "lab", "--ip=0.0.0.0", "--allow-root"]
+CMD ["sh", "-c", "nginx && python -m dask.distributed --nprocs 4 --nthreads 2 --memory-limit 4GB --interface 0.0.0.0"]
