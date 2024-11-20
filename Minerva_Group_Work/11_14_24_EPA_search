@@ -1,0 +1,184 @@
+from campd.epa.gov
+Clean Air Markets Program Data
+### 3 Data Access Methods: custom data download, bulk data files, api
+
+from https://campd.epa.gov/data/custom-data-download- query data button
+data type- emissions, subtype annual emissions, aggregation unit: state
+time period- 2021,  state- kansas: "annual-emissions-state-aggregation-1.csv" download
+
+### search method:
+To look at CO₂ injection-related data for Kansas from January through June 2021 on the CAMPD EPA website, follow these steps:
+
+1. **Visit the Website**: Go to [CAMPD's custom data download page](https://campd.epa.gov/data/custom-data-download).
+
+2. **Select the Data Type**: **Emissions - Hourly** or **Emissions - Continuous Monitoring** based on the granularity of data. If available, options directly related to CO₂.
+
+3. **Select the Date Range**: **Start Date** to `01/01/2021` and the **End Date** to `06/30/2021`.
+
+4. **Filter by State**: **Kansas**
+
+5. **Program Selection**:
+Based CO₂ injections, emissions tracking.
+The most relevant programs could be:
+New Source Performance Standards subpart TTTT (NSPS4T) – If it covers CO₂-related standards for injection or capture.
+Acid Rain Program (ARP) – May indirectly track CO₂ data.
+Cross-State Air Pollution Rule NOx Annual Program (CSNOX) – If NOx data is tied to CO₂ injection sites.
+Skip ozone-focused or regional programs like RGGI unless specific to CO₂.
+
+6. **Unit Fuel Type Selection**
+For CO₂ injection, typical sources may include:
+Natural Gas (NNG) or Pipeline Natural Gas (PNG) – Common for CO₂ emissions or capture facilities.
+Coal (C) – If coal plants are part of the CO₂ capture.
+Other Solid Fuel (OSF) or Process Gas (PRG) – If applicable to specific industrial CO₂ capture and storage.
+
+
+If there isnt a direct "CO₂ injection" category, look for relevant facilities or sources associated with injection activities, such as wells or specific facilities listed under Kansas' stationary sources for CO₂ emissions.
+
+7. review the fields. Look for: CO₂ injection-specific fields (e.g., monitored storage, emissions related to injection). Facilities identified as injection or storage sites.
+
+8. **Run the Query**: click **Submit** or **Download Data**.
+
+The logic behind selecting **Programs** and **Fuel Types** lies in identifying the connection between **CO₂ emissions**, **capture**, and **injection processes**, as these are commonly associated with specific regulatory programs and fuel sources. Here’s the reasoning:
+
+---
+
+### Reasoning for Program & Fuel selection
+Selecting programs and fuels tied to **large emitters** and **carbon capture technologies** can narrow the dataset to facilities or sources relevant to **CO₂ injection**. This ensures my search aligns with industries and programs that monitor or participate in carbon management initiatives.
+
+
+### **Programs**
+1. **New Source Performance Standards subpart TTTT (NSPS4T)**:
+- **Why**: This program governs emissions from specific facilities, including CO₂ emissions from power plants. Facilities with carbon capture and storage (CCS) may fall under this program.
+- **Relevance**: Likely includes data for facilities engaged in CO₂ capture, injection, or monitoring as part of emissions reductions.
+
+2. **Acid Rain Program (ARP)**:
+- **Why**: While primarily focused on SO₂ and NOx reductions, the program covers large emitters, many of which may also monitor CO₂ as part of their operations.
+- **Relevance**: May provide indirect insight into facilities likely involved in CO₂ injection.
+
+3. **Cross-State Air Pollution Rule (CSAPR) Programs (e.g., CSNOX)**:
+- **Why**: These programs track pollutants like NOx and SO₂, often from facilities that also monitor or capture CO₂ due to regulatory overlaps.
+- **Relevance**: Emission sources participating in CSAPR may also engage in CCS or CO₂ injection activities.
+
+4. **Regional Greenhouse Gas Initiative (RGGI)** (less likely for Kansas):
+- **Why**: Tracks greenhouse gas emissions, including CO₂, in participating states. However, Kansas is not part of RGGI, so this is likely irrelevant.
+
+---
+
+### **Fuel Types**
+1. **Natural Gas (NNG, PNG)**:
+- *Why**: Facilities using natural gas are common candidates for carbon capture technologies due to their lower baseline CO₂ emissions and higher efficiency.
+- **Relevance**: Likely contributors to CO₂ injections if CCS is implemented.
+
+2. **Coal (C)**:
+- **Why**: Coal-fired power plants are significant CO₂ emitters and are often equipped with CCS technology to mitigate emissions.
+- **Relevance**: High likelihood of being involved in CO₂ injection efforts.
+
+3. **Process Gas (PRG)** or **Other Gas (OGS)**:
+- **Why**: Industrial processes that produce CO₂ as a byproduct may inject it for storage or use it for enhanced oil recovery (EOR).
+- **Relevance**: Direct link to CO₂ injections depending on the industry.
+
+4. **Other Solid Fuel (OSF)**:
+- **Why**: Includes alternative fuels that might be associated with CO₂ production.
+- **Relevance**: Less likely but worth including if the specific facilities in Kansas use solid fuel.
+
+---
+
+### **Exclusions**
+- **Ozone Programs** (e.g., CSOSG1, CSOSG2):
+- Focused on NOx and ozone pollution during summer months; not directly related to CO₂.
+- **Fuel Types like Wood, Tires, and Refuse**:
+- Unlikely to be linked to significant CO₂ injection or storage activities.
+
+---
+
+
+
+### Drop down menu reference
+Programs: Active Programs- 13
+Annual Programs
+
+Acid Rain Program (ARP)
+
+Cross-State Air Pollution Rule NOx Annual Program (CSNOX)
+
+Cross-State Air Pollution Rule SO2 Annual Program Group 1 (CSSO2G1)
+
+Cross-State Air Pollution Rule SO2 Annual Program Group 2 (CSSO2G2)
+
+New Source Performance Standards subpart TTTT (NSPS4T)
+
+Regional Greenhouse Gas Initiative (RGGI)
+
+Texas SO2 Trading Program (TXSO2)
+Ozone Programs
+
+Cross-State Air Pollution Rule NOx Ozone Season Program Group 1 (CSOSG1)
+
+Cross-State Air Pollution Rule NOx Ozone Season Program Group 2 (CSOSG2)
+
+Cross-State Air Pollution Rule NOx Ozone Season Program Expanded Group 2 (CSOSG2E)
+
+Cross-State Air Pollution Rule NOx Ozone Season Program Group 3 (CSOSG3)
+
+NH NOx Program (NHNOX)
+
+SIP NOx Program (SIPNOX)
+
+
+
+### Drop down menu reference - 17
+Unit fuel type:
+
+-Coal
+
+Coal (C)
+
+Coal Refuse (CRF)
+
+Petroleum Coke (PTC)
+
+-Gas
+
+Liquified Petroleum Gas (LPG)
+
+Natural Gas (NNG)
+
+Other Gas (OGS)
+
+Pipeline Natural Gas (PNG)
+
+Process Gas (PRG)
+
+-Oil
+
+Diesel Oil (DSL)
+
+Residual Oil (OIL)
+
+Other Oil (OOL)
+
+-Other
+
+Other Solid Fuel (OSF)
+
+Process Sludge (PRS)
+
+Refuse (R)
+
+Tire Derived Fuel (TDF)
+
+Wood (W)
+
+Waste Liquid (WL)
+
+### downloaded csv "C:\Users\minef\Downloads\hourly-emissions-state-aggregation-03e96112-4015-4e27-9f7f-f70a9311f9f8.csv"
+https://drive.google.com/file/d/1-OSTXTfvMw0c2zBYueSkGef4dKkomk0Z/view?usp=drive_link
+
+
+"G:\My Drive\Colab Notebooks\hourly-emissions-state-aggregation-2.csv"
+
+"C:\Users\minef\Downloads\hourly-emissions-state-aggregation-03e96112-4015-4e27-9f7f-f70a9311f9f8.csv"
+
+"C:\Users\minef\Documents\hourly_emissions_state_aggregation_2.csv"
+
+### TO DO: Pull into Colab
