@@ -6,9 +6,12 @@ ENV DEBIAN_FRONTEND=noninteractive
 # Set the working directory
 WORKDIR /app
 
+<<<<<<< HEAD
 # Copy the src directory
 COPY src/ /app/src/
 
+=======
+>>>>>>> ebcc5591f4d974fc17a301d804440d396f8de587
 # Install additional system dependencies
 RUN apt-get update && apt-get install -y \
     wget \
