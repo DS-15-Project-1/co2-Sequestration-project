@@ -1,0 +1,60 @@
+11/13/24 Group Meeting
+
+### pick a time period  for seismic data and co2
+jan thru june 2021
+whole data set runs 2019 thru 2022
+
+seismic data from kansas
+and co2 from kansas
+
+git hub
+
+2 datasets
+ dataset ecamps
+
+ first one we looked at
+
+ get all data into 1 dataframe
+
+### links from Robert - https://campd.epa.gov/ [2] https://www.epa.gov/power-sector/cam-api-portal [3] https://campd.epa.gov/help-support/about [4] https://www.epa.gov/system/files/documents/2022-07/CAMD%27s%20Power%20Sector%20Emissions%20Data%20Guide%20-%2007182022.pdf [5] https://ecmps-beta.app.cloud.gov/ [6] https://www.epa.gov/power-sector/frequent-questions-about-capd-re-engineering-effort [7] https://ecmps.camdsupport.com/learn_intro.shtml [8] https://api.epa.gov/easey/beta/content-mgmt/ecmps/reporting-instructions/mp-reporting-instructions.docx [9] https://fa.oregonstate.edu/sites/fa.oregonstate.edu/files/budget/2014_chart_element_termination_form_with_lookup.xlsx [10] https://www.epa.gov/system/files/documents/2024-03/fy-2025-congressional-justification-all-tabs.pdf
+
+### My project questions 
+
+in analyzing combined datasets to explore not only the environmental implications of CO2 sequestration but also its economic viability and impact. 
+                                 
+These questions will also lay the groundwork for future studies and policy recommendations.
+
+1. What is the correlation between seismic events and CO2 injection during sequestration processes?
+To address the primary environmental concern of the project: whether CO2 injection for sequestration causes seismic activity. By analyzing miniSEED seismic data and correlating it with CO2 injection events, you can determine if there is a statistically significant relationship between the two. To provide insight into safety and stability of CO2 sequestration techniques, which is critical for scaling these technologies and ensuring they do not lead to unexpected seismic risks (e.g., induced earthquakes).
+                                 
+To answer this: time series analysis and spatial correlation techniques to match seismic events (both downhole and surface) with CO2 injection events. 
+
+Advanced data processing in Python, leveraging ObsPy for seismic data handling and other tools for data integration, would be required to parse through large datasets efficiently and extract meaningful patterns.
+                                 
+
+2. What are the economic benefits of CO2 sequestration in terms of tax credits, cost savings, and oil production optimization?
+To focus on economic impact of CO2 sequestration, which is crucial for policy adoption and industrial investment. Understanding the financial incentives—such as tax credits for CO2 capture and savings from reduced oil production needs—could help demonstrate the feasibility of CO2 sequestration as a profitable business practice. This would contribute to the overall goal of making sequestration not only environmentally sustainable but also economically viable.
+To answer this: Analyze CO2 sequestration tax credits and cost-saving data, integrating them with injection and production data to model the economic impact. Quantify the potential benefits and savings by comparing the reduced need for new wells with the tax credits received. Statistical analysis and economic modeling will be necessary to draw conclusions about the financial incentives for companies involved in CO2 sequestration.
+
+a real seismic events reach the surface at topside and basement level--
+
+once we get all data together, 2nd database, all transaction data that worked for this project, will get it this weekend so we can  see-- business aspect
+
+### Questions/Comments from Robert
+how many seismic events occurred
+how much co2 was injected
+how many times it was injected
+
+pumped directly from power plants
+kept in plants temporarily
+pumpled over to a well in a pipe
+
+well, and injection well
+pump old water into and will inject compressed co2
+
+theyll collect that in a group of tanks, separated in to dirty water, oil and co2
+
+once co2 is taken to the site, it will be injected into the ground and sequestered
+
+
+### TO DO: get a dataset from campd.epa.gov
