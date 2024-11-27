@@ -1,0 +1,54 @@
+import requests
+import json
+
+# Load the JSON Schema from the URL
+url = "https://api.epa.gov/easey/beta/content-mgmt/ecmps/reporting-instructions/emissions.schema.json"
+response = requests.get(url)
+if response.status_code == 200:
+    emissions_schema = response.json()
+    print("Schema loaded successfully!")
+else:
+    raise Exception(f"Failed to fetch the schema. HTTP Status Code: {response.status_code}")
+
+# Print Top-Level Keys
+print("Top-level keys:", emissions_schema.keys())
+
+# Explore Properties
+properties = emissions_schema.get("properties", {})
+print("\nProperties:", properties.keys())
+
+# Inspect a Specific Property (e.g., 'facilityID')
+facility_id = properties.get("facilityID", {})
+print("\nDetails of 'facilityID':", json.dumps(facility_id, indent=2))
+
+# Check Required Fields
+required_fields = emissions_schema.get("required", [])
+print("\nRequired fields:", required_fields)
+
+# Explore Nested Fields
+measurement_period = properties.get("measurementPeriod", {})
+if measurement_period.get("type") == "object":
+    print("\nMeasurement Period Fields:", measurement_period.get("properties", {}).keys())
+
+# Pretty Print Full Schema
+print("\nFull Schema:")
+print(json.dumps(emissions_schema, indent=2))
+
+# Recursive Exploration of Schema
+def explore_schema(schema, depth=0):
+    """Recursively explore and print schema structure."""
+    indent = "  " * depth
+    if "properties" in schema:
+        print(f"{indent}Properties:")
+        for key, value in schema["properties"].items():
+            print(f"{indent}- {key} ({value.get('type', 'unknown')})")
+            if value.get("type") == "object":
+                explore_schema(value, depth + 1)
+            elif value.get("type") == "array":
+                print(f"{indent}  - Array Items:")
+                explore_schema(value.get("items", {}), depth + 2)
+    if "required" in schema:
+        print(f"{indent}Required Fields: {schema['required']}")
+
+print("\nRecursive Exploration of Schema:")
+explore_schema(emissions_schema)

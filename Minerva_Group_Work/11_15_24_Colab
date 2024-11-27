@@ -1,0 +1,53 @@
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+
+df = pd.read_csv("hourly_emissions_state_aggregation_2.csv")
+df2= pd.read_csv("daily-emissions-state-aggregation-11_19_24.csv")
+
+hourly = df.copy()
+daily = df2.copy()
+
+
+hourly = hourly.rename(columns={
+    "CO2 Mass (short tons)": "CO2_tons",
+    'Gross Load (MW)' : 'Gross_MW',
+    'NOx Mass (lbs)': 'NOx_Lbs',
+    'Steam Load (1000 lb/hr)': 'Steam_Lb',
+    'SO2 Mass (lbs)': 'SO2_Lbs',
+    'Heat Input (mmBtu)': 'Heat_mmBtu'
+
+}) 
+
+daily.head()
+
+#Convert 'Date' column in hourly df & daily df to datetime64 dtype
+hourly['Date']= pd.to_datetime(hourly['Date'])
+daily['Date'] = pd.to_datetime(daily['Date'])
+
+hour_day_CO2 = hourly.groupby('Date')['CO2_tons'].sum()
+hour_day_CO2 = pd.DataFrame(hour_day_CO2)
+
+daily = daily.rename(columns={
+    "CO2 Mass (short tons)": "CO2_tons",
+    'Gross Load (MWh)' : 'Gross_MW',
+    'NOx Mass (short tons)': 'NOx_tons',
+    'Steam Load (1000 lb)': 'Steam_Lb',
+    'SO2 Mass (short tons)': 'SO2_Lbs',
+    'Heat_mmBtu)': 'Heat_mmBtu'
+
+}) 
+
+
+#Compare total daily CO2 outputs from hourly df vs daily df
+merged_df = pd.merge(hour_day_CO2, daily[['Date', 'CO2_tons']], on='Date', suffixes= ('_hourly', '_daily'))
+
+merged_df['CO2_diff'] = merged_df['CO2_tons_hourly'] - merged_df['CO2_tons_daily']
+merged_df['Difference_Exists'] = merged_df['CO2_diff'] != 0
+
+# New DataFrame with index and Date for rows with differences
+difference_df = merged_df[merged_df['Difference_Exists']][['Date']].copy() # Select Date column
+
+difference_df.insert(0, 'Index', difference_df.index)  # Insert index as the first column
+
+difference_df.reset_index(drop=True, inplace=True)  # Reset index to sequential numbers
