@@ -1,0 +1,19 @@
+Nov 27:
+Research background on: 
+https://www.ecfr.gov/current/title-40/chapter-I/subchapter-C/part-60/subpart-OOO/section-60.675
+
+https://www.federalregister.gov/reader-aids/developer-resources
+Developer tools, REST API
+“One of the difficulties for anyone seeking to use government data is to match up datasets from various Federal sources. Identifiers such as field names and agency name references often are not identical. Further, the data is often complex and requires a fair amount of understanding of agency processes to create a coherent whole.”
+
+Flow rate calculation
+https://www.ecfr.gov/current/title-40/chapter-I/subchapter-C/part-60/subpart-OOO/section-60.675
+“Observations shall be one hour, ten 6 min intervals”
+“The duration of the Method 9 (40 CFR part 60, appendix A-4) observations may be reduced to the duration the affected facility operates (but not less than 30 minutes) for baghouses that control storage bins or enclosed truck or railcar loading stations that operate for less than 1 hour at a time.”
+
+
+
+On Thursday, November 21st, 2024 at 10:52 AM, Alison Turner <amturnr@gmail.com> wrote:
+Hi Melissa,
+
+Thanks for reaching out! Reading between the lines a bit in your email, I'm assuming you're looking for correlations of CO2 sequestration and seismic activity. I was able to find quite a bit of seismic activity data (updated every three minutes, as I type this email it was last updated today at 10:30am) from the Kansas Geological society and would recommend reaching out to their research team for data that might be in a more usable format to you ( webadmin@kgs.ku.edu). I would match that seismic activity data up with the locations of CO2 sequestration facilities listed in the EPA GHGP data (https://www.epa.gov/ghgreporting/data-sets) potentially crosschecked with KU's permit database? (http://maps.kgs.ku.edu/kgs_web/injection/class1_permits.cfm)
