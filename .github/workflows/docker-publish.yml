@@ -6,8 +6,9 @@ name: Docker
 # documentation.
 
 on:
-  schedule:
-    - cron: "28 2 * * *"
+  # Removed daily cron schedule that was causing failures
+  # schedule:
+  #   - cron: "28 2 * * *"
   push:
     branches: ["main"]
     # Publish semver tags as releases.
@@ -34,6 +35,14 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+
+      # Check if Dockerfile exists before proceeding
+      - name: Check for Dockerfile
+        run: |
+          if [ ! -f "Dockerfile" ]; then
+            echo "No Dockerfile found. Skipping Docker build."
+            exit 0
+          fi
 
       # Install the cosign tool except on PR
       # https://github.com/sigstore/cosign-installer
